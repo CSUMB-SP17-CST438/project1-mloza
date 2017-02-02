@@ -1,0 +1,6 @@
+<!doctype html>
+<title>Hello from Flask</title>
+
+{% for t in public_tweets %}
+    <div id='tweet'>{{ t.text }} <br><br></div>
+{% endfor %}
