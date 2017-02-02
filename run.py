@@ -7,8 +7,6 @@ import tweepy
 import os
 import random
 
-import urllib3
-
 app = flask.Flask(__name__)
 
 CONSUMER_KEY = '7jLLLL9umXTzcehteOGYi64DB'
@@ -37,7 +35,7 @@ def index():
     results = api.search(q="sushi", lang="en")
     # if (not tweet.retweeted) and ('RT @' not in tweet.text):
     
-    results = tweepy.Cursor(api.search, q="sushi", lang="en").items(10)
+    results = tweepy.Cursor(api.search, q="sushi", lang="en").items(1)
     # tweet = api.get_status(results)
     # user_id = tweet.user.id
       

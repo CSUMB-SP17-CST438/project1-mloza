@@ -2,5 +2,6 @@
 <title>Hello from Flask</title>
 
 {% for t in public_tweets %}
-    <div id='tweet'>{{ t.text }} <br><br></div>
+    <div id='tweet'>{{t.text}}<br><br>{{t.user.name}} @{{t.user.screen_name}} <br><br> <a target="_blank" href="https://twitter.com/{{t.user.screen_name}}/status/{{t.id}}">link</a> <br><br></div>
+    <!--<div>{{ t.user.screen_name }}</div>-->
 {% endfor %}
