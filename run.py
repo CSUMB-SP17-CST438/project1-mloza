@@ -33,7 +33,6 @@ def index():
     
 
 app.run(
-    port=int(os.getenv('Port', 8080)),
     host=os.getenv('IP', '0.0.0.0'),
-    #=True #allows me to refresh the page for changes
+    port=int(os.getenv('PORT', 8080))
 )
