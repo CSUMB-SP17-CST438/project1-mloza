@@ -19,17 +19,17 @@ ACCESS_TOKEN_SECRET = 'EiZTFhSXUAFhhSrslbfH6nHygVIcGjFaKFClVU5arOUk4'
 
 @app.route('/')  # Google "Python decorator" 
 def index():
-    # auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET_KEY)
-    # auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET_KEY)
+    auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
     
-    # api = tweepy.API(auth)
+    api = tweepy.API(auth)
     
-    # results = api.search(q="sushi", lang="en")
+    results = api.search(q="sushi", lang="en")
     
-    # results = tweepy.Cursor(api.search, q="sushi", lang="en").items(1)
+    results = tweepy.Cursor(api.search, q="sushi", lang="en").items(1)
       
-    # return flask.render_template('twitterTest.html', public_tweets=results)
-    return "Hi"
+    return flask.render_template('twitterTest.html', public_tweets=results)
+    # return "Hi"
     
 
 app.run(
