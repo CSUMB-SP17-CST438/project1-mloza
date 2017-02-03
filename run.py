@@ -10,11 +10,11 @@ import random
 
 app = flask.Flask(__name__)
 
-# CONSUMER_KEY = '7jLLLL9umXTzcehteOGYi64DB'
-# CONSUMER_SECRET_KEY = 'X3Rnv5oi6nc1P5wLWsgDRiKbi0rYhrv8V2bfG20CKaml4MaYpt'
+CONSUMER_KEY = '7jLLLL9umXTzcehteOGYi64DB'
+CONSUMER_SECRET_KEY = 'X3Rnv5oi6nc1P5wLWsgDRiKbi0rYhrv8V2bfG20CKaml4MaYpt'
 
-# ACCESS_TOKEN = '1518510956-T4xcbHXHnqokR75OJCtxqwhLHal4mSswfVfmstL'
-# ACCESS_TOKEN_SECRET = 'EiZTFhSXUAFhhSrslbfH6nHygVIcGjFaKFClVU5arOUk4'
+ACCESS_TOKEN = '1518510956-T4xcbHXHnqokR75OJCtxqwhLHal4mSswfVfmstL'
+ACCESS_TOKEN_SECRET = 'EiZTFhSXUAFhhSrslbfH6nHygVIcGjFaKFClVU5arOUk4'
 
 
 @app.route('/')  # Google "Python decorator" 
