@@ -6,6 +6,7 @@ import flask
 import tweepy
 import os
 import requests, json
+import requests_oauthlib
 import random
 
 app = flask.Flask(__name__)
@@ -21,15 +22,30 @@ def index():
 
     
     ###### TWITTER/TWEEPY API setup
-    auth = tweepy.OAuthHandler(os.getenv("CONSUMER_KEY"), os.getenv("CONSUMER_SECRET_KEY"))
-    auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_TOKEN_SECRET"))
-    api = tweepy.API(auth)
-    results = api.search(q="sushi", lang="en")
-    results = tweepy.Cursor(api.search, q="sushi", lang="en").items(1)
+    url = "https://api.twitter.com/1.1/search/tweets.json?q=sushi&src=typd"
+    oauth = requests_oauthlib.OAuth1(
+        os.getenv("CONSUMER_KEY"), 
+        os.getenv("CONSUMER_SECRET_KEY"),
+        os.getenv("ACCESS_TOKEN"),
+        os.getenv("ACCESS_TOKEN_SECRET")
+    )
+    response = requests.get(url, auth=oauth)
+    json_body =  response.json()
+    randNum = random.randrange(0, 10)
+    text = json_body["statuses"][randNum]["text"] 
+    name = json_body["statuses"][randNum]["user"]["name"]
+    lang = json_body["statuses"][randNum]["user"]["lang"]
+    while (lang != "en"):
+        randNum = random.randrange(0, 10)
+        text = json_body["statuses"][randNum]["text"] 
+        name = json_body["statuses"][randNum]["user"]["name"]
+        lang = json_body["statuses"][randNum]["user"]["lang"]
+    
+    
     
     
       
-    return flask.render_template('proj1.html', public_tweets=results, bg_image=pic)
+    return flask.render_template('proj1.html', text=text, name=name, bg_image=pic)
     
 
 app.run(
