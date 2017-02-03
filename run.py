@@ -10,17 +10,13 @@ import random
 
 app = flask.Flask(__name__)
 
-CONSUMER_KEY = '7jLLLL9umXTzcehteOGYi64DB'
-CONSUMER_SECRET_KEY = 'X3Rnv5oi6nc1P5wLWsgDRiKbi0rYhrv8V2bfG20CKaml4MaYpt'
-
-ACCESS_TOKEN = '1518510956-T4xcbHXHnqokR75OJCtxqwhLHal4mSswfVfmstL'
-ACCESS_TOKEN_SECRET = 'EiZTFhSXUAFhhSrslbfH6nHygVIcGjFaKFClVU5arOUk4'
-
-
 @app.route('/')  # Google "Python decorator" 
 def index():
-    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET_KEY)
-    auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+    # auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET_KEY)
+    # auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+    
+    auth = tweepy.OAuthHandler(os.getenv("CONSUMER_KEY"), os.getenv("CONSUMER_SECRET_KEY"))
+    auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_TOKEN_SECRET"))
     
     api = tweepy.API(auth)
     
