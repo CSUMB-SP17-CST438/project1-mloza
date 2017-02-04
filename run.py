@@ -3,8 +3,7 @@
 
 from flask import Flask
 from flask import request
-import flask 
-import tweepy
+import flask
 import os
 import requests, json
 import requests_oauthlib
@@ -20,7 +19,7 @@ def index():
     response = requests.get(url, headers=my_headers)
     json_body = response.json()
     randNum = random.randint(0, 29) #only 30 pictures are returned
-    pic = json_body["images"][randNum]["display_sizes"][0]["uri"]
+    pic = json_body["images"][randNum]["display_sizes"][0]["uri"] #size comp
 
     
     ###### TWITTER/TWEEPY API setup
