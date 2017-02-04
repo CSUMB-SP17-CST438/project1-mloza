@@ -35,17 +35,21 @@ def index():
     randNum = random.randint(0, 49)
     text = json_body["statuses"][randNum]["text"] 
     name = json_body["statuses"][randNum]["user"]["name"]
+    screen_name = json_body["statuses"][randNum]["user"]["screen_name"]
+    idNum = json_body["statuses"][randNum]["id"]
     lang = json_body["statuses"][randNum]["user"]["lang"]
     while (lang != "en"):
         randNum = random.randint(0, 49)
         text = json_body["statuses"][randNum]["text"] 
         name = json_body["statuses"][randNum]["user"]["name"]
+        screen_name = json_body["statuses"][randNum]["user"]["screen_name"]
+        idNum = json_body["statuses"][randNum]["id"]
         lang = json_body["statuses"][randNum]["user"]["lang"]
     
     
     
       
-    return flask.render_template('proj1.html', text=text, name=name, bg_image=pic)
+    return flask.render_template('proj1.html', text=text, name=name, bg_image=pic, screen=screen_name, idNum=idNum)
     
 
 app.run(
